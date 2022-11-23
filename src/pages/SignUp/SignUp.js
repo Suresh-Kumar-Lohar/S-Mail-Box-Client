@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 import classes from './SignUp.module.css'
-import googleLogo from '../assets/googleLogo.png'
+import googleLogo from '../../assets/googleLogo.png'
 import { Link } from 'react-router-dom'
-import { loginUser } from '../store/auth-actions'
+import { loginUser } from '../../store/auth-actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const auth = useSelector((state) => state.auth)
   const [email, setEmail] = useState(auth.email)
   const [password, setPassword] = useState('')
   const [confirmPass, setConfirmPass] = useState('')
   const [isUser, setIsUser] = useState(true)
+
+  if (auth.isLoggedIn) {
+    history.replace('/welcome')
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault()

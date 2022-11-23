@@ -1,0 +1,20 @@
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  margin: 0 1rem;
+}
+
+p {
+  padding: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.p2 {
+  background: rgb(255, 172, 172);
+  border-radius: 0.5rem;
+}
+
+.p2 span {
+  color: blue;
+}

@@ -1,6 +1,7 @@
 import Header from './components/Header/Header'
-import SignUp from './pages/SignUp'
+import SignUp from './pages/SignUp/SignUp'
 import { Route, Redirect } from 'react-router-dom'
+import Welcome from './pages/Welcome/Welcome'
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
       </Route>
       <Route path='/login'>
         <SignUp />
+      </Route>
+      <Route path='/welcome'>
+        <Welcome />
       </Route>
     </div>
   )
