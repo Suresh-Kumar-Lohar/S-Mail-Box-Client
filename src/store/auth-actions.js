@@ -1,5 +1,4 @@
 import { authActions } from './authSlice'
-import { useHistory } from 'react-router-dom'
 
 // export const fetchCartData = () => {
 //   return async (dispatch) => {

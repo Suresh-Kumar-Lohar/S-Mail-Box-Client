@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const localData = localStorage.getItem('details')
-const details = JSON.parse(localData)
-let x, y, logged
-if (details) {
-  x = details.token
-  y = details.email
-  logged = true
-} else {
-  x = null
-  y = null
-  logged = false
-}
+// const localData = localStorage.getItem('details')
+// const details = JSON.parse(localData)
+// let x, y, logged
+// if (details) {
+//   x = details.token
+//   y = details.email
+//   logged = true
+// } else {
+//   x = null
+//   y = null
+//   logged = false
+// }
 const initialAuthState = {
-  token: x,
-  email: y,
-  isLoggedIn: logged,
+  token: null,
+  email: null,
+  isLoggedIn: false,
 }
 
 const authSlice = createSlice({
