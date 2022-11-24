@@ -1,14 +1,20 @@
-import Header from './components/Header/Header'
 import SignUp from './pages/SignUp/SignUp'
 import { Route, Redirect } from 'react-router-dom'
 import Welcome from './pages/Welcome/Welcome'
 import EditorComp from './components/Editor/EditorComp'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { authActions } from './store/authSlice'
+import EmailBox from './pages/EmailBox/EmailBox'
+import { fetchMyEmailData } from './store/email-actions'
+import MailPage from './pages/MailPage'
+import './App.css'
+import { useHistory } from 'react-router-dom'
 
 function App() {
   const dispatch = useDispatch()
+  const isAuth = useSelector((state) => state.auth)
+  const history = useHistory()
 
   useEffect(() => {
     const localData = localStorage.getItem('details')
@@ -17,27 +23,45 @@ function App() {
     if (details) {
       x = details.token
       y = details.email
+
       // logged = true
       dispatch(authActions.login({ token: x, email: y }))
+      dispatch(fetchMyEmailData(y))
     }
   }, [])
 
   return (
     <div>
+      <button
+        className='logout'
+        onClick={() => {
+          localStorage.clear()
+          history.replace('/')
+          dispatch(authActions.logout())
+        }}
+      >
+        Logout
+      </button>
       <Route path='/' exact>
-        <Redirect to='/gmail' />
-      </Route>
-      <Route path='/gmail'>
-        <Header />
-      </Route>
-      <Route path='/login'>
-        <SignUp />
+        <Redirect to='/welcome' />
       </Route>
       <Route path='/welcome'>
         <Welcome />
       </Route>
+      <Route path='/login'>
+        <SignUp />
+      </Route>
+      <Route path='/email/:emailId' exact>
+        {isAuth.isLoggedIn && <MailPage />}
+        {!isAuth.isLoggedIn && <Redirect to='/login' />}
+      </Route>
+      <Route path='/email'>
+        {isAuth.isLoggedIn && <EmailBox />}
+        {!isAuth.isLoggedIn && <Redirect to='/login' />}
+      </Route>
       <Route path='/editor'>
-        <EditorComp />
+        {isAuth.isLoggedIn && <EditorComp />}
+        {!isAuth.isLoggedIn && <Redirect to='/login' />}
       </Route>
     </div>
   )

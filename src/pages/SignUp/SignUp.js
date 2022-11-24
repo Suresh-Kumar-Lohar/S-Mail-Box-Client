@@ -17,7 +17,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (auth.isLoggedIn) {
-      history.replace('/welcome')
+      history.replace('/email')
     }
   }, [auth, history])
 
@@ -54,8 +54,8 @@ const SignUp = () => {
           <p className={classes.pp2}>to continue to Gmail</p>
           <div className={classes.enterVal}>
             <input
-              id='name'
-              type='text'
+              id='email'
+              type='email'
               placeholder='Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}

@@ -1,12 +1,22 @@
 .editorComp {
-  width: 98%;
-  margin: auto auto;
+  width: 80%;
+  /* margin: auto auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
+
+  position: absolute;
+  /* width: 80%; */
+  min-height: 700px;
+  z-index: 30;
+  left: 10%;
+  top: 5%;
+  background: white;
+  box-shadow: 0 0.3px 5px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
 }
 
 .eHeader {
-  background: rgb(233, 231, 231);
+  background: rgb(253, 251, 251);
   padding: 0.5rem 0;
   display: flex;
   justify-content: space-between;

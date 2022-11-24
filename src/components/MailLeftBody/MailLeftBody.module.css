@@ -1,0 +1,58 @@
+.leftBody {
+  z-index: 5;
+  width: 20%;
+  /* align-items: center; */
+  border: 5px solid red;
+}
+
+.leftInside {
+  padding: 1rem;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  /* border: 5px solid green; */
+}
+
+.insideImg {
+  margin: 1rem 0.5rem;
+  border-radius: 0.4rem;
+  width: 9rem;
+  height: 3rem;
+  background: none;
+  z-index: 21;
+}
+
+.leftBody button {
+  cursor: pointer;
+  background: white;
+  margin: 2rem 0;
+  font-weight: 555;
+  font-size: 1.4rem;
+  width: 10rem;
+  padding: 1.2rem 0.4rem;
+  text-align: center;
+  border-radius: 8px;
+  /* border-style: none; */
+}
+
+.leftBody button:hover {
+  background: rgb(224, 219, 219);
+}
+
+.linkType {
+  display: flex;
+  align-items: center;
+}
+
+.linkType p {
+  /* color: white; */
+  margin: 1rem 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.linkType p:hover {
+  background: gray;
+}

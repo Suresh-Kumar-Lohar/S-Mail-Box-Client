@@ -1,0 +1,68 @@
+.emailList {
+  width: 98%;
+  margin: 0 1rem;
+  padding: 0 1rem;
+  border-radius: 1rem;
+}
+
+.emailList a {
+  list-style: none;
+  color: black;
+}
+.li1 {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid gray;
+  margin: 0;
+}
+
+.li1 h3 {
+  width: 250px;
+  margin-right: 1rem;
+}
+.Edetails {
+  display: flex;
+  align-items: center;
+}
+
+.Edetails h4 {
+  margin: 0 0.5rem 0 0;
+}
+
+.a1 {
+  /* width: 100%; */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+}
+
+.a1 button {
+  cursor: pointer;
+  background: rgb(138, 138, 245);
+  border-radius: 4px;
+  margin-left: 1rem;
+  color: white;
+  font-weight: 555;
+  width: 2rem;
+  font-size: 1rem;
+  padding: 0.3rem;
+  border-style: none;
+  border: 0.5px solid rgb(209, 207, 207);
+}
+
+.a1 button:hover {
+  background: rgb(51, 51, 173);
+}
+
+.Edetails p {
+  margin-right: 1rem;
+}
+
+.emailList:hover {
+  background: rgb(211, 206, 206);
+}

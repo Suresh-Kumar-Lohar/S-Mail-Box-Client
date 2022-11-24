@@ -1,22 +1,27 @@
 import React from 'react'
 import classes from './Welcome.module.css'
 import { Link } from 'react-router-dom'
-
+import logo from '../../assets/gmail-logo.jpg'
+import backImg from '../../assets/website-support.jpg'
 const Welcome = () => {
   return (
-    <div className={classes.welcome}>
-      <p>
-        <i>Welcome to Mail CLient Box!!!</i>
-      </p>
-      <p className={classes.p2}>
-        <i>
-          Your profile is incomplete.{' '}
-          <span>
-            <Link to='/updateProfile'>Complete Now</Link>
-          </span>
-        </i>
-      </p>
-    </div>
+    <>
+      <img src={backImg} className={classes.backImg} />
+      <header className={classes.header}>
+        <div className={classes.headerInside}>
+          <img src={logo} alt='gmail' />
+          <div className={classes.insideBtn}>
+            <p>For Work</p>
+            <Link to='/login'>
+              <button className={classes.btn1}>Sign in</button>
+            </Link>
+            <Link to='/login'>
+              <button className={classes.btn2}>Create an account</button>
+            </Link>
+          </div>
+        </div>
+      </header>
+    </>
   )
 }
 

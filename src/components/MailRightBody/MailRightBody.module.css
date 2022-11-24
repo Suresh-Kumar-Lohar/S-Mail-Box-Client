@@ -1,0 +1,45 @@
+.rightBody {
+  z-index: 5;
+  width: 78%;
+  border: 5px solid green;
+}
+
+.enterVal {
+  margin: 1rem;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enterVal label {
+  display: block;
+}
+
+.enterVal input {
+  width: 100%;
+  padding: 1rem 0.8rem;
+  border-style: none;
+  /* border-radius: 0.3rem; */
+  font-size: 1.2rem;
+  border: 0.8px solid rgb(211, 208, 208);
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.enterVal button {
+  background: white;
+  padding: 0.37rem;
+  /* border-style: none; */
+  /* margin-left: 1rem; */
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border: 0.8px solid rgb(211, 208, 208);
+}
+
+.mainList {
+  background: rgba(97, 94, 94, 0.3);
+  width: 100%;
+  height: 800px;
+  border-radius: 1rem;
+}

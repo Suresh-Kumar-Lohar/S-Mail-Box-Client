@@ -1,0 +1,46 @@
+.mailPage {
+  position: absolute;
+  width: 80%;
+  min-height: 700px;
+  z-index: 20;
+  left: 10%;
+  top: 8%;
+  background: rgb(255, 244, 225);
+  border: 3px solid black;
+  padding: 1rem;
+}
+
+.mp0 {
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
+  cursor: pointer;
+  background: rgb(138, 138, 245);
+  border-radius: 4px;
+  color: white;
+  font-weight: 555;
+  font-size: 1rem;
+  padding: 0.3rem;
+  border-style: none;
+  border: 0.5px solid rgb(209, 207, 207);
+}
+
+.mp0:hover {
+  background: rgb(82, 82, 190);
+}
+
+.mp1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mp2 {
+  margin: 0;
+  border-bottom: 1px solid gray;
+}
+
+.mailPage .mp3 {
+  font-weight: 500;
+  margin: 3rem 1rem;
+}

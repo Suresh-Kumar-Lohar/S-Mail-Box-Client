@@ -4,9 +4,14 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import classes from './EditorComp.module.css'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { addEmailData } from '../../store/email-actions'
+import { emailActions } from '../../store/emailSlice'
 
 const EditorComp = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
   const [editorValue, setEditorValue] = useState('')
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
@@ -21,46 +26,20 @@ const EditorComp = () => {
   }
 
   const EmailHandler = async (event) => {
-    const date = new Date()
-    console.log(date)
     event.preventDefault()
+    const date = new Date()
+    // console.log(auth.email)
+
     const mailObj = {
-      email: email,
+      from: auth.email,
+      to: email,
       date: date,
       subject: subject,
       content: editorValue,
     }
-    let tmp1 = email.split('@')[0]
-    let tmp2 = email.split('@')[1]
-    let tmp3 = tmp2.split('.')[0]
-    let tmp4 = tmp2.split('.')[1]
-    let finalMail = tmp1 + tmp3 + tmp4
-    console.log(finalMail)
 
-    try {
-      const resp = await axios.post(
-        `https://mail-box-client-ea769-default-rtdb.firebaseio.com/${finalMail}.json`,
-        mailObj
-      )
-      console.log(resp)
-      if (resp.status === 200) {
-        setMailSent(true)
-        setTimeout(() => {
-          // history.replace('/...')
-          setMailSent(false)
-        }, 1500)
-      } else {
-        let errorMessage = 'Sending mail failed'
-        const data = await resp.json()
-        console.log(data)
-        errorMessage = data.error.message
-        throw new Error(errorMessage)
-      }
-    } catch (error) {
-      window.alert(error.message)
-      console.log(error.message)
-    }
-
+    dispatch(addEmailData(email, mailObj))
+    dispatch(emailActions.stopEditing())
     console.log(mailObj)
   }
   return (
@@ -70,7 +49,7 @@ const EditorComp = () => {
           <p>New Message</p>
           <div className={classes.eHeBtn}>
             <p>-</p>
-            <p>x</p>
+            <p onClick={() => dispatch(emailActions.stopEditing())}>x</p>
           </div>
         </div>
         <input
