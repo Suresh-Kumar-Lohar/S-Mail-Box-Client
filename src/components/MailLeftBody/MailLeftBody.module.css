@@ -48,11 +48,14 @@
 
 .linkType p {
   /* color: white; */
-  margin: 1rem 1rem;
+  margin: 0.5rem 0.5rem;
   font-weight: bold;
   font-size: 1.2rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
 }
 
 .linkType p:hover {
-  background: gray;
+  background: rgb(180, 179, 179);
 }

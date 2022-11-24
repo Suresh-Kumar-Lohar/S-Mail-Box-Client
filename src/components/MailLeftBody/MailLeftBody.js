@@ -5,11 +5,20 @@ import { RiInboxArchiveFill } from 'react-icons/ri'
 import { IoIosSend } from 'react-icons/io'
 import { GrEdit } from 'react-icons/gr'
 import { MdOutlineUnfoldMore } from 'react-icons/md'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { emailActions } from '../../store/emailSlice'
 
 const MailLeftBody = () => {
   const dispatch = useDispatch()
+  const emailList = useSelector((state) => state.emailData)
+
+  let totalUnread = 0
+  emailList.inboxData.forEach((each) => {
+    if (each.isRead === false) {
+      totalUnread++
+    }
+  })
+
   return (
     <div className={classes.leftBody}>
       <div className={classes.leftInside}>
@@ -25,13 +34,17 @@ const MailLeftBody = () => {
           <div>
             <RiInboxArchiveFill size={30} />
           </div>
-          <p onClick={() => dispatch(emailActions.fetchInboxData())}>Inbox</p>
+          <p onClick={() => dispatch(emailActions.fetchInboxData())}>
+            Inbox ({totalUnread})
+          </p>
         </div>
         <div className={classes.linkType}>
           <div>
             <IoIosSend size={30} />
           </div>
-          <p onClick={() => dispatch(emailActions.fetchSentData())}>Sent</p>
+          <p onClick={() => dispatch(emailActions.fetchSentData())}>
+            Sent ({emailList.sentData.length})
+          </p>
         </div>
         <div className={classes.linkType}>
           <div>
