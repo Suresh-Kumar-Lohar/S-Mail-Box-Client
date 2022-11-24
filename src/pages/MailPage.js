@@ -1,11 +1,13 @@
 import React from 'react'
 import classes from './MailPage.module.css'
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { updateEmailData } from '../store/email-actions'
 
 const MailPage = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
   const emailList = useSelector((state) => state.emailData)
   const params = useParams()
 
@@ -18,8 +20,15 @@ const MailPage = () => {
       Data.to = each.to
       Data.date = each.date
       Data.subject = each.subject
+      Data.isRead = each.isRead
     }
   })
+  // console.log(Data)
+
+  if (Data.isRead === false) {
+    // console.log(Data)
+    Data.isRead = true
+  }
 
   // console.log(Data)
 
@@ -28,6 +37,7 @@ const MailPage = () => {
       <button
         className={classes.mp0}
         onClick={() => {
+          dispatch(updateEmailData(Data, params.emailId))
           history.replace('/email')
         }}
       >

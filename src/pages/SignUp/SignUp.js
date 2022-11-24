@@ -28,9 +28,11 @@ const SignUp = () => {
         console.log(email, password, confirmPass)
         dispatch(loginUser({ email: email, password: password }, isUser))
 
-        setEmail('')
-        setPassword('')
-        setConfirmPass('')
+        setTimeout(() => {
+          setEmail('')
+          setPassword('')
+          setConfirmPass('')
+        }, 800)
       } else {
         setConfirmPass('')
         alert('Please Re-enter Correct Confirm Password')

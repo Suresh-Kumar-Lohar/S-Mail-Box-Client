@@ -39,6 +39,7 @@ export const fetchMyEmailData = (myEmail) => {
                 date: body.date,
                 subject: body.subject,
                 content: body.content,
+                isRead: body.isRead,
               })
             }
             // console.log(body.from)
@@ -50,6 +51,7 @@ export const fetchMyEmailData = (myEmail) => {
                 date: body.date,
                 subject: body.subject,
                 content: body.content,
+                isRead: body.isRead,
               })
             }
           }
@@ -128,6 +130,38 @@ export const deleteEmailData = (email, type, id) => {
         dispatch(fetchMyEmailData(email))
       } else {
         let errorMessage = 'Deleting mail failed'
+        const data = await resp.json()
+        console.log(data)
+        errorMessage = data.error.message
+        throw new Error(errorMessage)
+      }
+    } catch (error) {
+      window.alert(error.message)
+      console.log(error.message)
+    }
+  }
+}
+
+export const updateEmailData = (emailBody, id) => {
+  return async (dispatch) => {
+    let tmp1 = emailBody.to.split('@')[0]
+    let tmp2 = emailBody.to.split('@')[1]
+    let tmp3 = tmp2.split('.')[0]
+    let tmp4 = tmp2.split('.')[1]
+    let editedMail = tmp1 + tmp3 + tmp4
+
+    try {
+      const resp = await axios.put(
+        `https://mail-box-client-ea769-default-rtdb.firebaseio.com/emails/${editedMail}/${id}.json`,
+        emailBody
+      )
+      //   console.log(resp)
+      if (resp.status === 200) {
+        // console.log(resp)
+        dispatch(fetchMyEmailData(emailBody.to))
+        // dispatch(emailActions.stopEditing())
+      } else {
+        let errorMessage = 'Sending mail failed'
         const data = await resp.json()
         console.log(data)
         errorMessage = data.error.message

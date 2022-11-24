@@ -1,7 +1,7 @@
 .rightBody {
   z-index: 5;
   width: 78%;
-  border: 5px solid green;
+  /* border: 5px solid green; */
 }
 
 .enterVal {

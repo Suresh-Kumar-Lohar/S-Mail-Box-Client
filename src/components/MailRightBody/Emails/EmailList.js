@@ -33,6 +33,9 @@ const EmailList = ({ item }) => {
   return (
     <div className={classes.emailList}>
       <li className={classes.li1}>
+        {!item.isRead && <div className={classes.read}></div>}
+        {item.isRead && <div className={classes.ignore}></div>}
+
         <Link to={`/email/${item.id}`}>
           <h3>{item.from}</h3>
         </Link>

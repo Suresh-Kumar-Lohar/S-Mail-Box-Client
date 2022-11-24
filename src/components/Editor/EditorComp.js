@@ -36,11 +36,12 @@ const EditorComp = () => {
       date: date,
       subject: subject,
       content: editorValue,
+      isRead: false,
     }
 
     dispatch(addEmailData(email, mailObj))
     dispatch(emailActions.stopEditing())
-    console.log(mailObj)
+    // console.log(mailObj)
   }
   return (
     <div className={classes.editorComp}>

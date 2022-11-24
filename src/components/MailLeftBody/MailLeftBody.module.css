@@ -2,7 +2,7 @@
   z-index: 5;
   width: 20%;
   /* align-items: center; */
-  border: 5px solid red;
+  box-shadow: 0 0.3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .leftInside {

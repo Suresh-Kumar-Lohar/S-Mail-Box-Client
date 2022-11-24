@@ -9,6 +9,7 @@
   list-style: none;
   color: black;
 }
+
 .li1 {
   width: 100%;
   list-style: none;
@@ -17,6 +18,21 @@
   position: relative;
   border-bottom: 1px solid gray;
   margin: 0;
+}
+
+.read {
+  background: blue;
+  height: 0.8rem;
+  width: 0.8rem;
+  margin: 0.4rem 0.4rem 0 0;
+  border-radius: 50%;
+}
+.ignore {
+  background: rgb(187, 187, 187);
+  height: 0.8rem;
+  width: 0.8rem;
+  margin: 0.4rem 0.4rem 0 0;
+  border-radius: 50%;
 }
 
 .li1 h3 {
