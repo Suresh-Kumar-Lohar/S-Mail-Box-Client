@@ -4,6 +4,20 @@
   /* border: 5px solid green; */
 }
 
+.rightBody .mrb1 {
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightBody .mrb1 h4 {
+  margin: 0 2rem;
+}
+.rightBody .mrb1 h3 {
+  margin: 0 2rem;
+  /* border-bottom: 1px solid black; */
+}
+
 .enterVal {
   margin: 1rem;
   width: 70%;

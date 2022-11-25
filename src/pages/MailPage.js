@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './MailPage.module.css'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { updateEmailData } from '../store/email-actions'
+import { fetchMyEmailData, updateEmailData } from '../store/email-actions'
 
 const MailPage = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const emailList = useSelector((state) => state.emailData)
   const params = useParams()
-
+  let emailListToShow = []
   let Data = {}
 
-  emailList.inboxData.forEach((each) => {
+  if (emailList.isInbox) {
+    emailListToShow = emailList.inboxData
+  } else if (emailList.isSent) {
+    emailListToShow = emailList.sentData
+  }
+
+  emailListToShow.forEach((each) => {
     if (each.id === params.emailId) {
+      // console.log(each)
       Data.content = each.content
       Data.from = each.from
       Data.to = each.to
@@ -23,10 +30,8 @@ const MailPage = () => {
       Data.isRead = each.isRead
     }
   })
-  // console.log(Data)
 
   if (Data.isRead === false) {
-    // console.log(Data)
     Data.isRead = true
   }
 
@@ -37,7 +42,9 @@ const MailPage = () => {
       <button
         className={classes.mp0}
         onClick={() => {
-          dispatch(updateEmailData(Data, params.emailId))
+          if (emailList.isInbox) {
+            dispatch(updateEmailData(Data, params.emailId))
+          }
           history.replace('/email')
         }}
       >

@@ -17,11 +17,8 @@ const MailRightBody = () => {
     Data = emailList.inboxData
   } else if (emailList.isSent) {
     Data = emailList.sentData
+    // console.log(Data)
   }
-
-  useEffect(() => {
-    dispatch(fetchMyEmailData(isAuth.email))
-  }, [])
 
   return (
     <div className={classes.rightBody}>
@@ -36,6 +33,12 @@ const MailRightBody = () => {
         <button>
           <FcSearch size={40} />
         </button>
+      </div>
+      <div className={classes.mrb1}>
+        <h4>
+          {emailList.isInbox ? 'All Received Mails...' : 'All Sent Mails...'}
+        </h4>
+        <h3>My Account : {isAuth.email}</h3>
       </div>
       <ul>
         {Data.map((item) => {

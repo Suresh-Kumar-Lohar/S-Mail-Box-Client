@@ -13,43 +13,44 @@ const EmailList = ({ item }) => {
 
   let dataType
   if (emailList.isInbox) {
-    dataType = 'Inbox'
+    dataType = 'inbox'
   } else if (emailList.isSent) {
-    dataType = 'Sent'
+    dataType = 'sent'
   }
-
   const tmp = new Date(item.date)
   const dateTime = tmp.toLocaleString()
-  const shortSubject = item.subject.slice(0, 25)
-  const shortContent = item.content.slice(0, 30)
-  // console.log(item.id)
-
-  let tmp1 = item.from.split('@')[0]
-  let tmp2 = item.from.split('@')[1]
-  let tmp3 = tmp2.split('.')[0]
-  let tmp4 = tmp2.split('.')[1]
-  let editedMail = tmp1 + tmp3 + tmp4
+  let shortSubject = ''
+  let shortContent = ''
+  if (item.subject.length > 25) {
+    shortSubject = item.subject.slice(0, 25)
+  }
+  if (item.content.length > 25) {
+    shortContent = item.content.slice(0, 30)
+  }
 
   return (
     <div className={classes.emailList}>
       <li className={classes.li1}>
-        {!item.isRead && <div className={classes.read}></div>}
-        {item.isRead && <div className={classes.ignore}></div>}
+        {!item.isRead && emailList.isInbox && (
+          <div className={classes.read}></div>
+        )}
+        {item.isRead && emailList.isInbox && (
+          <div className={classes.ignore}></div>
+        )}
 
         <Link to={`/email/${item.id}`}>
-          <h3>{item.from}</h3>
+          <h3>{emailList.isInbox ? item.from : item.to}</h3>
         </Link>
         <Link to={`/email/${item.id}`}>
           <div className={classes.Edetails}>
-            <h4>{shortSubject}</h4>
-            <p>{shortContent}</p>
+            <h4>{shortSubject.length === 0 ? item.subject : shortSubject}</h4>
+            <p>{shortContent.length === 0 ? item.content : shortContent}</p>
           </div>
         </Link>
         <div className={classes.a1}>
           <p>{dateTime}</p>
           <button
             onClick={() => {
-              console.log('here')
               dispatch(deleteEmailData(auth.email, dataType, item.id))
             }}
           >

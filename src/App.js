@@ -26,7 +26,7 @@ function App() {
 
       // logged = true
       dispatch(authActions.login({ token: x, email: y }))
-      dispatch(fetchMyEmailData(y))
+      setInterval(() => dispatch(fetchMyEmailData(y)), 2000)
     }
   }, [])
 
