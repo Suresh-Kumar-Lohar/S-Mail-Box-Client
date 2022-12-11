@@ -1,37 +1,5 @@
 import { authActions } from './authSlice'
 
-// export const fetchCartData = () => {
-//   return async (dispatch) => {
-//     const fetchData = async () => {
-//       const res = await fetch('https://money-f2b15.firebaseio.com/cart.json')
-//       if (!res.ok) {
-//         throw new Error('could not fetch cart data !')
-//       }
-//       const data = await res.json()
-
-//       return data
-//     }
-
-//     try {
-//       const cartData = await fetchData()
-//       dispatch(
-//         cartActions.replaceCart({
-//           items: cartData.items || [],
-//           totalQuantity: cartData.totalQuantity,
-//         })
-//       )
-//     } catch (error) {
-//       dispatch(
-//         uiActions.showNotification({
-//           status: 'error',
-//           title: 'Error...',
-//           message: 'Sending cart data failed!',
-//         })
-//       )
-//     }
-//   }
-// }
-
 export const loginUser = (user, isUser) => {
   return async (dispatch) => {
     let url
